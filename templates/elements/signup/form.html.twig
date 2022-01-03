@@ -1,0 +1,50 @@
+<h2>Unterzeichnen</h2>
+<div class="container g-0">
+    {{ form_start(form) }}
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    {{ form_row(form.name, { 'required': true, 'label': 'Name' }) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    {{ form_row(form.city, { 'required': true, 'label': 'Wohnort' }) }}
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    {{ form_row(form.email, { 'required': true, 'label': 'E-Mail' }) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    {{ form_row(form.showName, { 'required': false, 'label': 'Mein Name soll in der Liste der Unterzeichnenden erscheinen.' }) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input type="checkbox" id="{{ form.acceptPrivacyStatement.vars.id }}" name="{{ form.acceptPrivacyStatement.vars.full_name }}" required="required" class="form-check-input" value="1">
+                        <label for="{{ form.acceptPrivacyStatement.vars.id }}">Die <a href="{{ url('show-datenschutz') }}">Datenschutzerklärung</a> habe ich zur Kenntnis genommen und akzeptiere diese.</label>
+
+                        {% do form.acceptPrivacyStatement.setRendered() %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    {{ form_row(form.submit, { 'label': 'Jetzt unterzeichnen' }) }}
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>

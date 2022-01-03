@@ -1,0 +1,31 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Mhert\AufrufFuerVernunftUndSolidaritaet\App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    Mhert\AufrufFuerVernunftUndSolidaritaet\App\Application\:
+        resource: '../src/Application/**/*Controller.php'
+        tags: ['controller.service_arguments']
+
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler:
+        arguments:
+            - '@Redis'
+
+    Redis:
+        class: Predis\Client
+        arguments:
+            $parameters:
+                scheme: redis
+                host: '%env(REDIS_HOST)%'
+                port: '%env(int:REDIS_PORT)%'
+                password: '%env(REDIS_PASSWORD)%'

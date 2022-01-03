@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Erklärung für Vernunft und Solidarität in der Corona-Pandemie im Landkreis Weißenburg-Gunzenhausen {{ title|default('') }}</title>
+        <meta name="description" content="Erklärung für Vernunft und Solidarität in der Corona-Pandemie im Landkreis Weißenburg-Gunzenhausen"/>
+        <meta property="og:title" content="Erklärung für Vernunft und Solidarität in der Corona-Pandemie im Landkreis Weißenburg-Gunzenhausen" />
+        <meta property="og:description" content="Erklärung für Vernunft und Solidarität in der Corona-Pandemie im Landkreis Weißenburg-Gunzenhausen">
+        <meta property="og:locale" content="de_DE" />
+        <link href="{{ asset('bootstrap.min.css', 'css') }}" rel="stylesheet">
+        <link href="{{ asset('app.css', 'css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <header class="container-fluid p-4 bg-primary text-white text-center">
+            <h1 class="title">Erklärung für Vernunft und Solidarität in der Corona-Pandemie im Landkreis Weißenburg-Gunzenhausen</h1>
+        </header>
+        <main class="container mx-auto px-3 my-5">
+            {{ body | raw }}
+        </main>
+        <footer class="bd-footer py-5 mt-5 bg-light">
+            <nav class="container py-5">
+                <ul class="d-flex flex-row justify-content-center footer-nav">
+                    <li class="p-2"><a href="{{ url('show-resolution') }}">Resolution</a></li>
+                    <li class="p-2"><a href="{{ url('show-datenschutz') }}">Datenschutz</a></li>
+                    <li class="p-2"><a href="{{ url('show-impressum') }}">Impressum</a></li>
+                </ul>
+            </nav>
+        </footer>
+        <script src="{{ asset('app.js', 'js') }}"></script>
+    </body>
+</html>

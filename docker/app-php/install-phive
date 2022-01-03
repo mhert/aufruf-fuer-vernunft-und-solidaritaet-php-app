@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Original can be found here: https://github.com/phar-io/phive
+
+wget -O /usr/local/bin/phive "https://phar.io/releases/phive.phar"
+wget -O /tmp/phive.asc "https://phar.io/releases/phive.phar.asc"
+
+gpg --keyserver hkps://keys.openpgp.org --recv-keys 0x6AF725270AB81E04D79442549D8A98B29B2D5D79
+gpg --verify /tmp/phive.asc /usr/local/bin/phive
+
+rm /tmp/phive.asc
+
+chmod +x /usr/local/bin/phive
