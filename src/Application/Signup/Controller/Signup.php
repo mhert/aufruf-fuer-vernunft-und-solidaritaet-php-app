@@ -1,6 +1,6 @@
 <?php
 
-namespace Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup;
+namespace Mhert\AufrufFuerVernunftUndSolidaritaet\App\Application\Signup\Controller;
 
 final class Signup
 {
@@ -10,4 +10,5 @@ final class Signup
     public string $email;
     public bool $showName;
     public bool $acceptPrivacyStatement;
+    public bool $acceptFurtherContact;
 }

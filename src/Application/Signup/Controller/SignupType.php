@@ -2,7 +2,6 @@
 
 namespace Mhert\AufrufFuerVernunftUndSolidaritaet\App\Application\Signup\Controller;
 
-use Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup\Signup;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,6 +18,7 @@ final class SignupType extends AbstractType
             ->add('city', TextType::class)
             ->add('email', TextType::class)
             ->add('showName', CheckboxType::class)
+            ->add('acceptFurtherContact', CheckboxType::class)
             ->add('acceptPrivacyStatement', CheckboxType::class)
             ->add('submit', SubmitType::class)
         ;

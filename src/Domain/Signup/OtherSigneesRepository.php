@@ -13,6 +13,7 @@ interface OtherSigneesRepository
         string $city,
         string $email,
         bool $showName,
+        bool $acceptFurtherContact,
         bool $acceptPrivacyStatement,
     ): void;
 }

@@ -3,7 +3,6 @@
 namespace Mhert\AufrufFuerVernunftUndSolidaritaet\App\Application\Signup\Controller;
 
 use Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup\OtherSigneesRepository;
-use Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup\Signup;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +29,7 @@ final class SignResolutionController
             $signup->city,
             $signup->email,
             $signup->showName,
+            $signup->acceptFurtherContact,
             $signup->acceptPrivacyStatement,
         );
 

@@ -48,6 +48,7 @@ final class PostgresqlOtherSigneesRepository implements OtherSigneesRepository
         string $city,
         string $email,
         bool $showName,
+        bool $acceptFurtherContact,
         bool $acceptPrivacyStatement,
     ): void {
         $res = $this->postgresql
@@ -63,6 +64,7 @@ final class PostgresqlOtherSigneesRepository implements OtherSigneesRepository
                 'email' => $email,
                 'attributes' => json_encode([
                     'showName' => $showName,
+                    'acceptFurtherContact' => $acceptFurtherContact,
                     'acceptPrivacyStatement' => $acceptPrivacyStatement,
                     'confirmed' => false,
                 ]),

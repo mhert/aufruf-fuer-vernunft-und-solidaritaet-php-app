@@ -30,6 +30,13 @@
         <div class="row">
             <div class="col">
                 <div class="mb-3">
+                    {{ form_row(form.acceptFurtherContact, { 'required': false, 'label': 'Ich möchte über die Petition und weitere Aktion informiert werden und erlaube die Kontaktaufnahme via E-Mail.' }) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
                     <div class="form-check">
                         <input type="checkbox" id="{{ form.acceptPrivacyStatement.vars.id }}" name="{{ form.acceptPrivacyStatement.vars.full_name }}" required="required" class="form-check-input" value="1">
                         <label for="{{ form.acceptPrivacyStatement.vars.id }}">Die <a href="{{ url('show-datenschutz') }}">Datenschutzerklärung</a> habe ich zur Kenntnis genommen und akzeptiere diese.</label>
