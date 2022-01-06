@@ -1,5 +1,5 @@
 {% if signee.function is defined %}
-<li><small>{{ signee.name }} - {{ signee.city }} {% if signee.function %} ({{ signee.function }}) {% endif %}</small></li>
+<li><small><b>{{ signee.name }}</b> - {{ signee.city }} {% if signee.function %} ({{ signee.function }}) {% endif %}</small></li>
 {% else %}
-<li><small>{% if signee.showName %} {{ signee.name }} {% else %} Anonym {% endif %} - {{ signee.city }}</small></li>
+    <li><small>{% if signee.showName %} <b>{{ signee.name }}</b> {% else %} Anonym {% endif %} - {{ signee.city }}</small></li>
 {% endif %}
