@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Mhert\AufrufFuerVernunftUndSolidaritaet\App\Application\Signup\Controller;
 
-use Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup\Signup;
+use Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup\FirstSigneesRepository;
+use Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup\OtherSigneesRepository;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +18,8 @@ use Twig\Environment as TwigEnvironment;
 final class ShowResolutionController
 {
     public function __construct(
+        private readonly FirstSigneesRepository $firstSigneesRepository,
+        private readonly OtherSigneesRepository $otherSigneesRepository,
         private readonly FormFactoryInterface $formFactory,
         private readonly RouterInterface $router,
         private readonly TwigEnvironment $twig,
@@ -25,7 +28,8 @@ final class ShowResolutionController
 
     public function __invoke(Request $request): Response
     {
-        $signup = new Signup();
+        $firstSignees = $this->firstSigneesRepository->findAllConfirmedSignees();
+        $otherSignees = $this->otherSigneesRepository->findAllConfirmedSignees();
 
         return new Response(
             $this->twig->render(
@@ -33,7 +37,8 @@ final class ShowResolutionController
                 [
                     'body' => $this->twig->render('views/signup/show-resolution.html.twig', [
                         'form' => $this->createForm(),
-                        'signup' => $signup,
+                        'firstSignees' => iterator_to_array($firstSignees),
+                        'otherSignees' => iterator_to_array($otherSignees),
                     ]),
                     'title' => '',
                 ]

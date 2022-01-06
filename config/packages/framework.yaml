@@ -21,6 +21,8 @@ framework:
                 base_path: assets/fonts/
             js:
                 base_path: assets/js/
+            favicon:
+                base_path: assets/favicon/
 
 when@test:
     framework:

@@ -24,7 +24,7 @@ final class ShowDatenschutzerklaerungController
                 'base.html.twig',
                 [
                     'body' => $this->twig->render('views/pages/datenschutz.html.twig'),
-                    'title' => ' - Impressum',
+                    'title' => ' - Datenschutzerklärung',
                 ]
             )
         );

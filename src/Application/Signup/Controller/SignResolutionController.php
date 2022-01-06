@@ -2,6 +2,7 @@
 
 namespace Mhert\AufrufFuerVernunftUndSolidaritaet\App\Application\Signup\Controller;
 
+use Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup\OtherSigneesRepository;
 use Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup\Signup;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -16,12 +17,21 @@ final class SignResolutionController
     public function __construct(
         private readonly FormFactoryInterface $formFactory,
         private readonly RouterInterface $router,
+        private readonly OtherSigneesRepository $otherSigneesRepository,
     ) {
     }
 
     public function __invoke(Request $request): Response
     {
         $signup = $this->parseRequestData($request);
+
+        $this->otherSigneesRepository->store(
+            $signup->name,
+            $signup->city,
+            $signup->email,
+            $signup->showName,
+            $signup->acceptPrivacyStatement,
+        );
 
         return new RedirectResponse(
             $this->router->generate('thank-you')
@@ -32,7 +42,7 @@ final class SignResolutionController
     {
         /** @var Signup $signup */
         $signup = $this->formFactory->create(
-            SignupType::class
+            type: SignupType::class,
         )->handleRequest(
             $request
         )->getData();
