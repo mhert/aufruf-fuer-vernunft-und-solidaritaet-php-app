@@ -12,6 +12,8 @@ rules:
   document-start: disable
   line-length:
     max: 120
+  truthy:
+    allowed-values: ['true', 'false', 'on']
 
 yaml-files:
   - "yamllint.config.yaml"

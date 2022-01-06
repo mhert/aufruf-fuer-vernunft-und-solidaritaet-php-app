@@ -53,45 +53,9 @@
         gesellschaftliche Spaltung erst herbeiführen, die sie selbst wehleidig beklagen.
     </p>
     <h2>Erstunterzeichnende</h2>
-    <div class="container g-0">
-        <div class="row g-0">
-            <ul class="col signee-list">
-                <li><small>Landrat Manuel Westphal - Meinheim</small></li>
-                <li><small>Oberbürgermeister Jürgen Schröppel - Weißenburg</small></li>
-            </ul>
-            <ul class="col signee-list">
-                <li><small>SPD-Kreisvorsitzende WUG Anette Pappler - Pappenheim</small></li>
-                <li><small>SPD-Kreisvorsitzender Harald Dösel - Weimersheim</small></li>
-                <li><small>DBG-Kreisvorsitzender Willi Ruppert - Treuchtlingen</small></li>
-            </ul>
-        </div>
-    </div>
+    {{ include('elements/signup/signee-list.html.twig', {'signees':firstSignees}) }}
     <h2>Weitere Unterzeichnende</h2>
-    <div class="container g-0">
-        <div class="row g-0">
-            <ul class="col signee-list signee-list-first-block">
-                <li><small>Anonym - Meinheim</small></li>
-                <li><small>Hans Wurst - Weißenburg</small></li>
-            </ul>
-            <ul class="col signee-list signee-list-first-block">
-                <li><small>Jemand anderes - Pappenheim</small></li>
-                <li><small>Irgendjemand - Weimersheim</small></li>
-            </ul>
-        </div>
-        <div class="row g-0">
-            <ul class="col signee-list signee-list-rest-block d-none">
-                <li><small>Anonym - Meinheim</small></li>
-                <li><small>Hans Wurst - Weißenburg</small></li>
-            </ul>
-            <ul class="col signee-list signee-list-rest-block d-none">
-                <li><small>Jemand anderes - Pappenheim</small></li>
-                <li><small>Irgendjemand - Weimersheim</small></li>
-                <li><small>Bla bla bla - Treuchtlingen</small></li>
-            </ul>
-        </div>
-        <div class="d-flex flex-row justify-content-center">
-            <a class="signee-list-show-all" href="#show-all">Alle anzeigen...</a>
-        </div>
-    </div>
-    {% include 'elements/signup/form.html.twig' %}
+    {{ include('elements/signup/signee-list.html.twig', {'signees':otherSignees}) }}
+
+    {{ include('elements/signup/form.html.twig') }}
 </div>

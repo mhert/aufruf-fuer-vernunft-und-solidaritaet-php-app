@@ -4,9 +4,9 @@ RUN mkdir -p /var/wwww
 WORKDIR /var/www
 
 RUN apt update && \
-    apt install -y git libzip-dev libzstd-dev zlib1g-dev unzip p7zip && \
-    docker-php-ext-install -j$(nproc) zip && \
-    docker-php-ext-enable zip
+    apt install -y git libpq-dev libzip-dev libzstd-dev zlib1g-dev unzip p7zip && \
+    docker-php-ext-install -j$(nproc) pdo pdo_pgsql zip && \
+    docker-php-ext-enable pdo pdo_pgsql zip
 
 COPY docker/app-php/install-composer /usr/local/bin/
 RUN install-composer
@@ -41,8 +41,12 @@ RUN apt update && \
 
 
 FROM php:8.1-fpm-buster as app-php-prod
+RUN apt update && \
+    apt install -y libpq-dev && \
+    docker-php-ext-install -j$(nproc) pdo pdo_pgsql && \
+    docker-php-ext-enable pdo pdo_pgsql
 
-RUN mkdir -p /var/wwww
+RUN mkdir -p /var/www
 WORKDIR /var/www
 
 COPY --from=app-php-builder /var/www/config /var/www/config

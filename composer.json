@@ -6,9 +6,11 @@
   "require": {
     "ext-ctype": "*",
     "ext-iconv": "*",
+    "ext-pdo": "*",
+    "ext-pdo_pgsql": "*",
     "doctrine/annotations": "^1.13.2",
     "predis/predis": "^1.1",
-    "ramsey/uuid": "^4.2.3",
+    "ramsey/uuid": "^4.2",
     "sensio/framework-extra-bundle": "^6.2.4",
     "symfony/asset": "^6.0.0",
     "symfony/config": "^6.0.2",
