@@ -28,11 +28,9 @@ final class PostgresqlFirstSigneesRepository implements FirstSigneesRepository
         return new FirstSignees(
             (function () use ($stmt): Generator {
                 while ($signee = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $attributes = json_decode($signee['attributes'], true);
                     yield new FirstSignee(
                         name: $signee['name'],
                         city: $signee['city'],
-                        email: $signee['email'],
                         function: $signee['function'],
                     );
                 }
