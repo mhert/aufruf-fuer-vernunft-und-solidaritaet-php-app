@@ -15,5 +15,6 @@ interface OtherSigneesRepository
         bool $showName,
         bool $acceptFurtherContact,
         bool $acceptPrivacyStatement,
+        string $ip,
     ): void;
 }

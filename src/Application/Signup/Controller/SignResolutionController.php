@@ -31,6 +31,7 @@ final class SignResolutionController
             $signup->showName,
             $signup->acceptFurtherContact,
             $signup->acceptPrivacyStatement,
+            $request->getClientIp(),
         );
 
         return new RedirectResponse(

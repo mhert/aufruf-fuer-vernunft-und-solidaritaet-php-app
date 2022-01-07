@@ -50,13 +50,14 @@ final class PostgresqlOtherSigneesRepository implements OtherSigneesRepository
         bool $showName,
         bool $acceptFurtherContact,
         bool $acceptPrivacyStatement,
+        string $ip,
     ): void {
         $res = $this->postgresql
             ->prepare(<<<SQL
                 INSERT INTO other_signees
-                    (other_signee_id, name, city, email, attributes)
+                    (other_signee_id, name, city, email, attributes, ip)
                 VALUES
-                    (:other_signee_id, :name, :city, :email, :attributes);
+                    (:other_signee_id, :name, :city, :email, :attributes, :ip);
             SQL)->execute([
                 'other_signee_id' => $this->uuidFactory->uuid4()->toString(),
                 'name' => $name,
@@ -68,6 +69,7 @@ final class PostgresqlOtherSigneesRepository implements OtherSigneesRepository
                     'acceptPrivacyStatement' => $acceptPrivacyStatement,
                     'confirmed' => false,
                 ]),
+                'ip' => $ip,
             ]);
     }
 }
