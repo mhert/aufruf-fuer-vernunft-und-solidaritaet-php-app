@@ -5,9 +5,10 @@
 .signee-list {
     list-style: none;
 }
-
-.signee-list:first-child {
-    margin-bottom: 0;
+@media (max-width: 768px) {
+    .signee-list:first-child {
+        margin-bottom: 0;
+    }
 }
 
 .resolution {
