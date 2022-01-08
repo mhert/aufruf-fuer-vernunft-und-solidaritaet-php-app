@@ -1,14 +1,7 @@
 <div class="container g-0">
     <ul class="row signee-list">
         {% for signee in signees %}
-            {% if loop.index % 2 == 1 %}
                 {{ include('elements/signup/signee-list-entry.html.twig') }}
-            {% endif %}
-        {% endfor %}
-        {% for signee in signees %}
-            {% if loop.index % 2 == 0 %}
-                {{ include('elements/signup/signee-list-entry.html.twig') }}
-            {% endif %}
         {% endfor %}
     </ul>
 </div>

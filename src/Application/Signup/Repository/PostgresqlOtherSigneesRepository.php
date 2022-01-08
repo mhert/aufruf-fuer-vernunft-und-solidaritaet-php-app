@@ -23,7 +23,7 @@ final class PostgresqlOtherSigneesRepository implements OtherSigneesRepository
     {
         $stmt = $this->postgresql
             ->prepare(<<<SQL
-                SELECT * FROM other_signees WHERE CAST(attributes ->> 'confirmed' AS BOOLEAN) = true;
+                SELECT * FROM other_signees WHERE CAST(attributes ->> 'confirmed' AS BOOLEAN) = true ORDER BY created DESC;
             SQL);
         $stmt->execute();
 
