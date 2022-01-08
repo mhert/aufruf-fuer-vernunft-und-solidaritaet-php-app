@@ -67,6 +67,7 @@ final class PostgresqlOtherSigneesRepository implements OtherSigneesRepository
                     'showName' => $showName,
                     'acceptFurtherContact' => $acceptFurtherContact,
                     'acceptPrivacyStatement' => $acceptPrivacyStatement,
+                    'locked' => false,
                     'confirmed' => false,
                 ]),
                 'ip' => $ip,
