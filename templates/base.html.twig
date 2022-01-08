@@ -8,10 +8,10 @@
         <meta property="og:title" content="Erklärung für Vernunft und Solidarität in der Corona-Pandemie im Landkreis Weißenburg-Gunzenhausen" />
         <meta property="og:description" content="Erklärung für Vernunft und Solidarität in der Corona-Pandemie im Landkreis Weißenburg-Gunzenhausen">
         <meta property="og:locale" content="de_DE" />
-        <link href="{{ asset('bootstrap.min.css', 'css') }}" rel="stylesheet"/>
-        <link href="{{ asset('app.css', 'css') }}" rel="stylesheet"/>
-        <link rel="icon" href="{{ asset('favicon.png', 'favicon') }}" sizes="any"/>
-        <link rel="apple-touch-icon" href="{{ asset('favicon.png', 'favicon') }}"/>
+        <link href="/assets/css/bootstrap.min.css?v={{ 'now'|date('U') }}" rel="stylesheet"/>
+        <link href="/assets/css/app.css?v={{ 'now'|date('U') }}" rel="stylesheet"/>
+        <link rel="icon" href="/assets/favicon/favicon.png?v={{ 'now'|date('U') }}" sizes="any"/>
+        <link rel="apple-touch-icon" href="/assets/favicon/favicon.png?v={{ 'now'|date('U') }}" sizes="any"/>
     </head>
     <body>
         <header class="container-fluid p-4 bg-primary text-white text-center">
@@ -29,6 +29,6 @@
                 </ul>
             </nav>
         </footer>
-        <script src="{{ asset('app.js', 'js') }}"></script>
+        <script src="/assets/js/app.js?v={{ 'now'|date('U') }}"></script>
     </body>
 </html>
