@@ -1,8 +1,10 @@
 window.addEventListener("load", function(){
-    document.querySelector(".signee-list-show-all").addEventListener("click", event => {
-        document.querySelectorAll(".signee-list-rest-block").forEach(element => {
-            element.classList.remove("d-none");
-        });
-        event.target.classList.add("d-none");
+    document.querySelectorAll(".signee-list-show-all").forEach(button => {
+        button.addEventListener("click", event => {
+            button.parentNode.parentNode.querySelectorAll(".signee-list .d-none").forEach(signee => {
+                signee.classList.remove("d-none");
+            });
+            event.target.classList.add("d-none");
+        })
     })
 });

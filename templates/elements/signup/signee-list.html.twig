@@ -1,7 +1,17 @@
 <div class="container g-0">
     <ul class="row signee-list">
         {% for signee in signees %}
+            {% if loop.index >= 51 %}
+                {% set hidden = true %}
+            {% else %}
+                {% set hidden = false %}
+            {% endif %}
                 {{ include('elements/signup/signee-list-entry.html.twig') }}
         {% endfor %}
     </ul>
+    {% if signees|length >= 51 %}
+    <div class="d-flex flex-row justify-content-center">
+        <a class="signee-list-show-all" href="#show-all">Alle anzeigen...</a>
+    </div>
+    {% endif %}
 </div>
