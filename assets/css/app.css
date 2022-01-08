@@ -4,11 +4,7 @@
 
 .signee-list {
     list-style: none;
-}
-@media (max-width: 768px) {
-    .signee-list:first-child {
-        margin-bottom: 0;
-    }
+    padding: 0;
 }
 
 .resolution {
