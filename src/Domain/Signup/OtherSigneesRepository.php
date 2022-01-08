@@ -8,6 +8,8 @@ interface OtherSigneesRepository
 {
     public function findAllConfirmedSignees(): OtherSignees;
 
+    public function numberOfAllConfirmedSignees(): int;
+
     public function store(
         string $name,
         string $city,

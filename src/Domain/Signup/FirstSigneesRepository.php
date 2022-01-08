@@ -7,4 +7,6 @@ namespace Mhert\AufrufFuerVernunftUndSolidaritaet\App\Domain\Signup;
 interface FirstSigneesRepository
 {
     public function findAllConfirmedSignees(): FirstSignees;
+
+    public function numberOfAllConfirmedSignees(): int;
 }

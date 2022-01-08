@@ -30,6 +30,8 @@ final class ShowResolutionController
     {
         $firstSignees = $this->firstSigneesRepository->findAllConfirmedSignees();
         $otherSignees = $this->otherSigneesRepository->findAllConfirmedSignees();
+        $numberOfFirstFirstSignees = $this->firstSigneesRepository->numberOfAllConfirmedSignees();
+        $numberOfOtherSignees = $this->otherSigneesRepository->numberOfAllConfirmedSignees();
 
         return new Response(
             $this->twig->render(
@@ -39,6 +41,8 @@ final class ShowResolutionController
                         'form' => $this->createForm(),
                         'firstSignees' => iterator_to_array($firstSignees),
                         'otherSignees' => iterator_to_array($otherSignees),
+                        'numberOfFirstFirstSignees' => $numberOfFirstFirstSignees,
+                        'numberOfOtherSignees' => $numberOfOtherSignees,
                     ]),
                     'title' => '',
                 ]

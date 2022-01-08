@@ -21,7 +21,7 @@ final class PostgresqlFirstSigneesRepository implements FirstSigneesRepository
     {
         $stmt = $this->postgresql
             ->prepare(<<<SQL
-                SELECT * FROM first_signees WHERE CAST(attributes ->> 'confirmed' AS BOOLEAN) = true ORDER BY position;
+                SELECT * FROM first_signees WHERE CAST(attributes ->> 'confirmed' AS BOOLEAN) = true ORDER BY position ASC;
             SQL);
         $stmt->execute();
 
@@ -36,5 +36,18 @@ final class PostgresqlFirstSigneesRepository implements FirstSigneesRepository
                 }
             })(),
         );
+    }
+
+    public function numberOfAllConfirmedSignees(): int
+    {
+        $stmt = $this->postgresql
+            ->prepare(<<<SQL
+                SELECT COUNT(*) as number_of_all_confirmed_singees FROM first_signees WHERE CAST(attributes ->> 'confirmed' AS BOOLEAN) = true;
+            SQL);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['number_of_all_confirmed_singees'];
     }
 }

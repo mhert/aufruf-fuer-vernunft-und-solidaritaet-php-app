@@ -43,6 +43,19 @@ final class PostgresqlOtherSigneesRepository implements OtherSigneesRepository
         );
     }
 
+    public function numberOfAllConfirmedSignees(): int
+    {
+        $stmt = $this->postgresql
+            ->prepare(<<<SQL
+                SELECT COUNT(*) number_of_all_confirmed_singees FROM other_signees WHERE CAST(attributes ->> 'confirmed' AS BOOLEAN) = true;
+            SQL);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['number_of_all_confirmed_singees'];
+    }
+
     public function store(
         string $name,
         string $city,

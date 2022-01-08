@@ -54,9 +54,9 @@
         </p>
         <p>Anette Pappler, Harald Dösel und Mathias Hertlein</p>
     </div>
-    <h2>Erstunterzeichnende</h2>
+    <h2>Erstunterzeichnende ({{ numberOfFirstFirstSignees }})</h2>
     {{ include('elements/signup/signee-list.html.twig', {'signees':firstSignees}) }}
-    <h2>Weitere Unterzeichnende</h2>
+    <h2>Weitere Unterzeichnende ({{ numberOfOtherSignees }})</h2>
     {{ include('elements/signup/signee-list.html.twig', {'signees':otherSignees}) }}
 
     {{ include('elements/signup/form.html.twig') }}
