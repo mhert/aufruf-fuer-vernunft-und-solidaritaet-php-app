@@ -16,26 +16,13 @@ final class SignResolutionController
     public function __construct(
         private readonly FormFactoryInterface $formFactory,
         private readonly RouterInterface $router,
-        private readonly OtherSigneesRepository $otherSigneesRepository,
     ) {
     }
 
     public function __invoke(Request $request): Response
     {
-        $signup = $this->parseRequestData($request);
-
-        $this->otherSigneesRepository->store(
-            $signup->name,
-            $signup->city,
-            $signup->email,
-            $signup->showName,
-            $signup->acceptFurtherContact,
-            $signup->acceptPrivacyStatement,
-            $request->getClientIp(),
-        );
-
         return new RedirectResponse(
-            $this->router->generate('thank-you')
+            $this->router->generate('show-resolution')
         );
     }
 

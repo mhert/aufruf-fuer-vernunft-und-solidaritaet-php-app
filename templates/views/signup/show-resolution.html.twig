@@ -57,7 +57,19 @@
     <h2>Erstunterzeichnende ({{ numberOfFirstFirstSignees }})</h2>
     {{ include('elements/signup/signee-list.html.twig', {'signees':firstSignees}) }}
     <h2>Weitere Unterzeichnende ({{ numberOfOtherSignees }})</h2>
-    {{ include('elements/signup/signee-list.html.twig', {'signees':otherSignees}) }}
-
-    {{ include('elements/signup/form.html.twig') }}
+    <div>
+        <p>
+            Innerhalb von nur 10 Tagen haben {{ numberOfOtherSignees }} Menschen aus dem ganzen Landkreis ein Zeichen
+            für Solidarität und Vernunft und gegen Hetze und Spaltung gesetzt. Niemals hätten wir mit so einer Resonanz gerechnet.
+        </p>
+        <p>
+             Vielen Dank für die Unterstützung!
+        </p>
+        <p>
+            <small>
+                Die Kampagne war von Anfang an darauf ausgelegt, nur für einen kurzen Zeitraum aktiv zu sein. Darum ist die
+                Möglichkeit die Resolution zu unterzeichnen seit dem 18.01.2022 deaktiviert.
+            </small>
+        </p>
+    </div>
 </div>
