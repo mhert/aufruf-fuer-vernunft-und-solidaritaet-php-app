@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  app-http:
+    image: ghcr.io/mhert/aufruf-fuer-vernunft-und-solidaritaet-php-app-app-http:v1
+    #build:
+    #  context: ${PWD}
+    #  dockerfile: ${PWD}/app-http.Dockerfile
+    ports:
+      - "80:80"
+    links:
+      - app-php
+
+  app-php:
+    environment:
+      APP_ENV: prod
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: mysecretpassword
+      POSTGRESQL_HOST: db
+      POSTGRESQ_PORT: 5432
+      POSTGRESQL_DBNAME: efvus
+      POSTGRESQ_USER: postgres
+      POSTGRESQ_PASSWORD: mysecretpassword
+    image: ghcr.io/mhert/aufruf-fuer-vernunft-und-solidaritaet-php-app-app-php:v1
+    #build:
+    #  context: ${PWD}
+    #  dockerfile: ${PWD}/app-php.Dockerfile
+
+
+  db:
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      PGDATA: /var/lib/postgresql/data/pgdata
+    image: postgres:14.1-bullseye
+    volumes:
+      - dbstore:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2-bullseye
+    command: ['redis-server', '--requirepass', 'mysecretpassword']
+
+volumes:
+  dbstore: ~

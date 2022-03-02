@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  app-http:
+    build:
+      context: ${PWD}
+      dockerfile: ${PWD}/app-http.Dockerfile
+    volumes:
+      - ${PWD}:/var/www
+      - ${PWD}/assets:/var/www/public/assets
+    links:
+      - app-php
+
+  app-php:
+    environment:
+      APP_ENV: dev
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: mysecretpassword
+      POSTGRESQL_HOST: db
+      POSTGRESQ_PORT: 5432
+      POSTGRESQL_DBNAME: efvus
+      POSTGRESQ_USER: postgres
+      POSTGRESQ_PASSWORD: mysecretpassword
+    build:
+      context: ${PWD}
+      dockerfile: ${PWD}/app-php.Dockerfile
+      target: app-php-dev
+    volumes:
+      - ${PWD}:/var/www
+    user: "${UID}:${GID}"
+    links:
+      - db
+
+  db:
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      PGDATA: /var/lib/postgresql/data/pgdata
+    image: postgres:14.1-bullseye
+    volumes:
+      - dbstore:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2-bullseye
+    command: ['redis-server', '--requirepass', 'mysecretpassword']
+
+volumes:
+  dbstore: ~
